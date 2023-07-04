@@ -1,13 +1,12 @@
-package com.desafio.apipagamento.entities;
+package com.desafio.apipagamento.domain.entities;
 
+import com.desafio.apipagamento.domain.enums.MetodoPagamento;
+import com.desafio.apipagamento.domain.enums.StatusPagamento;
 import com.desafio.apipagamento.exceptions.OperacaoInvalidaException;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Objects;
 
 @Entity

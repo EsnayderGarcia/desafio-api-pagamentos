@@ -1,6 +1,6 @@
-package com.desafio.apipagamento.dtos;
+package com.desafio.apipagamento.domain.dtos;
 
-import com.desafio.apipagamento.entities.StatusPagamento;
+import com.desafio.apipagamento.domain.enums.StatusPagamento;
 
 import javax.validation.constraints.NotNull;
 

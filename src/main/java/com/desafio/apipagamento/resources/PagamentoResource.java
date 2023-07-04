@@ -1,12 +1,11 @@
 package com.desafio.apipagamento.resources;
 
-import com.desafio.apipagamento.dtos.NovoPagamentoRequest;
-import com.desafio.apipagamento.dtos.NovoStatusPagamento;
-import com.desafio.apipagamento.dtos.PagamentoResponse;
+import com.desafio.apipagamento.domain.dtos.NovoPagamentoRequest;
+import com.desafio.apipagamento.domain.dtos.NovoStatusPagamento;
+import com.desafio.apipagamento.domain.dtos.PagamentoResponse;
 import com.desafio.apipagamento.services.PagamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

@@ -1,4 +1,4 @@
-package com.desafio.apipagamento.entities;
+package com.desafio.apipagamento.domain.enums;
 
 import com.desafio.apipagamento.exceptions.OperacaoInvalidaException;
 

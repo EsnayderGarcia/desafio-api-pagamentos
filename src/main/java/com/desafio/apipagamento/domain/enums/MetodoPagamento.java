@@ -1,4 +1,4 @@
-package com.desafio.apipagamento.entities;
+package com.desafio.apipagamento.domain.enums;
 
 public enum MetodoPagamento {
     PIX {

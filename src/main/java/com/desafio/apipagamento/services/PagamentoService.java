@@ -1,9 +1,9 @@
 package com.desafio.apipagamento.services;
 
-import com.desafio.apipagamento.dtos.NovoPagamentoRequest;
-import com.desafio.apipagamento.dtos.NovoStatusPagamento;
-import com.desafio.apipagamento.dtos.PagamentoResponse;
-import com.desafio.apipagamento.entities.Pagamento;
+import com.desafio.apipagamento.domain.dtos.NovoPagamentoRequest;
+import com.desafio.apipagamento.domain.dtos.NovoStatusPagamento;
+import com.desafio.apipagamento.domain.dtos.PagamentoResponse;
+import com.desafio.apipagamento.domain.entities.Pagamento;
 import com.desafio.apipagamento.exceptions.OperacaoInvalidaException;
 import com.desafio.apipagamento.repositories.PagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
