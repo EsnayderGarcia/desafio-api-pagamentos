@@ -35,4 +35,13 @@ public class PagamentoService {
         pagamento = pagamentoRepository.save(pagamento);
         return new PagamentoResponse(pagamento);
     }
+
+    @Transactional
+    public void deletar(Integer codigoDebito) {
+        Pagamento pagamento = pagamentoRepository.findById(codigoDebito)
+                .orElseThrow(() -> new OperacaoInvalidaException("Pagamento não encontrado para exclusão."));
+
+        pagamento.validarExclusao();
+        pagamentoRepository.delete(pagamento);
+    }
 }

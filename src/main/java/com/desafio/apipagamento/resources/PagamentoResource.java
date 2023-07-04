@@ -28,4 +28,10 @@ public class PagamentoResource {
     public PagamentoResponse atualizarStatus(@RequestBody @Valid NovoStatusPagamento novoStatusPagamento, @PathVariable Integer codigoDebito) {
         return pagamentoService.atualizarStatus(novoStatusPagamento, codigoDebito);
     }
+
+    @DeleteMapping("/{codigoDebito}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletar(@PathVariable Integer codigoDebito) {
+        pagamentoService.deletar(codigoDebito);
+    }
 }

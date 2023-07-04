@@ -30,12 +30,6 @@ public class Pagamento {
 
     private BigDecimal valor;
 
-    @CreationTimestamp
-    private Instant instanteCriacao;
-
-    @UpdateTimestamp
-    private Instant instanteAtualizacao;
-
     public Pagamento() {
     }
 
@@ -87,22 +81,6 @@ public class Pagamento {
         this.valor = valor;
     }
 
-    public Instant getInstanteCriacao() {
-        return instanteCriacao;
-    }
-
-    public void setInstanteCriacao(Instant instanteCriacao) {
-        this.instanteCriacao = instanteCriacao;
-    }
-
-    public Instant getInstanteAtualizacao() {
-        return instanteAtualizacao;
-    }
-
-    public void setInstanteAtualizacao(Instant instanteAtualizacao) {
-        this.instanteAtualizacao = instanteAtualizacao;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,5 +92,10 @@ public class Pagamento {
     @Override
     public int hashCode() {
         return Objects.hash(codigoDebito);
+    }
+
+    public void validarExclusao() {
+        if(!status.equals(StatusPagamento.PENDENTE))
+            throw new OperacaoInvalidaException("Apenas pagamentos com status pendentes podem ser excluídos.");
     }
 }
