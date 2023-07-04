@@ -17,7 +17,7 @@ public class PagamentoResponse {
 
     private BigDecimal valor;
 
-    private StatusPagamento statusPagamento;
+    private String statusPagamento;
 
     public PagamentoResponse() {
     }
@@ -28,7 +28,7 @@ public class PagamentoResponse {
         metodoPagamento = pagamento.getMetodoPagamento();
         numeroCartao = pagamento.getNumeroCartao();
         valor = pagamento.getValor();
-        statusPagamento = pagamento.getStatus();
+        statusPagamento = pagamento.getStatus().getDescricao();
 
     }
 
@@ -40,11 +40,11 @@ public class PagamentoResponse {
         this.valor = valor;
     }
 
-    public StatusPagamento getStatusPagamento() {
+    public String getStatusPagamento() {
         return statusPagamento;
     }
 
-    public void setStatusPagamento(StatusPagamento statusPagamento) {
+    public void setStatusPagamento(String statusPagamento) {
         this.statusPagamento = statusPagamento;
     }
 

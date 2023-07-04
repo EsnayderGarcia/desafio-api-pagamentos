@@ -1,6 +1,7 @@
 package com.desafio.apipagamento.resources;
 
 import com.desafio.apipagamento.dtos.NovoPagamentoRequest;
+import com.desafio.apipagamento.dtos.NovoStatusPagamento;
 import com.desafio.apipagamento.dtos.PagamentoResponse;
 import com.desafio.apipagamento.services.PagamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,11 @@ public class PagamentoResource {
     @ResponseStatus(HttpStatus.CREATED)
     public PagamentoResponse receber(@RequestBody @Valid NovoPagamentoRequest novoPagamento) {
         return pagamentoService.receber(novoPagamento);
+    }
+
+    @PutMapping("/{codigoDebito}")
+    @ResponseStatus(HttpStatus.OK)
+    public PagamentoResponse atualizarStatus(@RequestBody @Valid NovoStatusPagamento novoStatusPagamento, @PathVariable Integer codigoDebito) {
+        return pagamentoService.atualizarStatus(novoStatusPagamento, codigoDebito);
     }
 }

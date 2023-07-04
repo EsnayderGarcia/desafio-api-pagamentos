@@ -15,6 +15,7 @@ public class NovoPagamentoRequest {
     private String cpfCnpj;
 
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Campo Obrigatório.")
     private MetodoPagamento metodoPagamento;
 
     private String numeroCartao;
