@@ -1,8 +1,13 @@
 package com.desafio.apipagamento.entities;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_pagamento")
@@ -23,6 +28,12 @@ public class Pagamento {
     private String numeroCartao;
 
     private BigDecimal valor;
+
+    @CreationTimestamp
+    private Instant instanteCriacao;
+
+    @UpdateTimestamp
+    private Instant instanteAtualizacao;
 
     public Pagamento() {
     }
@@ -64,7 +75,7 @@ public class Pagamento {
     }
 
     public void setNumeroCartao(String numeroCartao) {
-        this.numeroCartao = numeroCartao;
+        this.numeroCartao = metodoPagamento.deveInformarNumeroDeCartao() ? numeroCartao : null;
     }
 
     public BigDecimal getValor() {
@@ -73,5 +84,34 @@ public class Pagamento {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public Instant getInstanteCriacao() {
+        return instanteCriacao;
+    }
+
+    public void setInstanteCriacao(Instant instanteCriacao) {
+        this.instanteCriacao = instanteCriacao;
+    }
+
+    public Instant getInstanteAtualizacao() {
+        return instanteAtualizacao;
+    }
+
+    public void setInstanteAtualizacao(Instant instanteAtualizacao) {
+        this.instanteAtualizacao = instanteAtualizacao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pagamento pagamento = (Pagamento) o;
+        return Objects.equals(codigoDebito, pagamento.codigoDebito);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigoDebito);
     }
 }
