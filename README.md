@@ -15,4 +15,8 @@ Neste desafio foi desenvolvida uma API Rest que fornece alguns recursos necessá
 - Banco de Dados H2
 - Swagger 3.0.0
 
+Após iniciar o projeto localmente, acesse a interface do swagger para melhor visualização da estrutura de endpoinst do projeto: <a href="http://localhost:8080/swagger-ui/index.html">SWAGGER 🚀</a>
+
+
+
 
