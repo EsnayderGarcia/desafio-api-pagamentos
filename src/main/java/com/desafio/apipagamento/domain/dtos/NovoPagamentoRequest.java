@@ -11,16 +11,16 @@ import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public class NovoPagamentoRequest {
-    @NotBlank(message = "Campo obrigatório.")
+    @NotBlank(message = "Campo CPF/CNPJ é obrigatório.")
     private String cpfCnpj;
 
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "Campo Obrigatório.")
+    @NotNull(message = "Campo método de pagamento é obrigatório.")
     private MetodoPagamento metodoPagamento;
 
     private String numeroCartao;
 
-    @NotNull(message = "Campo obrigatório.")
+    @NotNull(message = "Campo valor é obrigatório.")
     @Positive(message = "Informe um valor maior que zero.")
     private BigDecimal valor;
 
