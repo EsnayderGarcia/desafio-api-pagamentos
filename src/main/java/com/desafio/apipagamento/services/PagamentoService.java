@@ -32,7 +32,7 @@ public class PagamentoService {
     @Transactional
     public PagamentoResponse atualizarStatus(NovoStatusPagamento novoStatusPagamento, Integer codigoDebito) {
         Pagamento pagamento = pagamentoRepository.findById(codigoDebito)
-                .orElseThrow(() -> new OperacaoInvalidaException("Pagamento de código "+codigoDebito+" não encontrado para atualização de status."));
+                .orElseThrow(() -> new PagamentoNaoEncontradoException("Pagamento de código "+codigoDebito+" não encontrado para atualização de status."));
 
         pagamento.getStatus().validarAtualizacaoStatus(novoStatusPagamento.getStatus());
         pagamento.setStatus(novoStatusPagamento.getStatus());
@@ -44,7 +44,7 @@ public class PagamentoService {
     @Transactional
     public void deletar(Integer codigoDebito) {
         Pagamento pagamento = pagamentoRepository.findById(codigoDebito)
-                .orElseThrow(() -> new OperacaoInvalidaException("Pagamento de código "+codigoDebito+" não encontrado para exclusão."));
+                .orElseThrow(() -> new PagamentoNaoEncontradoException("Pagamento de código "+codigoDebito+" não encontrado para exclusão."));
 
         pagamento.validarExclusao();
         pagamentoRepository.delete(pagamento);
