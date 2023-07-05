@@ -5,6 +5,7 @@ import com.desafio.apipagamento.domain.dtos.NovoStatusPagamento;
 import com.desafio.apipagamento.domain.dtos.PagamentoResponse;
 import com.desafio.apipagamento.domain.entities.Pagamento;
 import com.desafio.apipagamento.exceptions.OperacaoInvalidaException;
+import com.desafio.apipagamento.exceptions.PagamentoNaoEncontradoException;
 import com.desafio.apipagamento.repositories.PagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,12 @@ public class PagamentoService {
 
         pagamento.validarExclusao();
         pagamentoRepository.delete(pagamento);
+    }
+
+    public PagamentoResponse buscarPorCodigoDebito(Integer codigoDebito) {
+        Pagamento pagamento = pagamentoRepository.findById(codigoDebito)
+                .orElseThrow(() -> new PagamentoNaoEncontradoException("Pagamento de código "+codigoDebito+" não encontrado."));
+
+        return new PagamentoResponse(pagamento);
     }
 }
