@@ -3,6 +3,7 @@ package com.desafio.apipagamento.resources;
 import com.desafio.apipagamento.domain.dtos.NovoPagamentoRequest;
 import com.desafio.apipagamento.domain.dtos.NovoStatusPagamento;
 import com.desafio.apipagamento.domain.dtos.PagamentoResponse;
+import com.desafio.apipagamento.domain.enums.StatusPagamento;
 import com.desafio.apipagamento.services.PagamentoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("pagamentos")
@@ -40,9 +42,19 @@ public class PagamentoResource {
         pagamentoService.deletar(codigoDebito);
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation("Filtrar pagamentos por CPF/CNPJ e/ou status do pagamento")
+    public List<PagamentoResponse> buscar(
+            @RequestParam(defaultValue = "")  @ApiParam(value = "CPF/CNPJ") String cpfCnpj,
+            @RequestParam(defaultValue = "") @ApiParam(value = "Status do pagamento") StatusPagamento status) {
+
+        return pagamentoService.buscar(cpfCnpj, status);
+    }
+
     @GetMapping("/{codigoDebito}")
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation("Buscar pagamento por código do débito")
+    @ApiOperation("Filtrar pagamento por código do débito")
     public PagamentoResponse buscarPorCodigoDebito(@PathVariable @ApiParam(value = "Código do débito") Integer codigoDebito) {
         return pagamentoService.buscarPorCodigoDebito(codigoDebito);
     }

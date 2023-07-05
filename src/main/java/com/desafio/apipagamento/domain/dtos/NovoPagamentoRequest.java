@@ -1,7 +1,7 @@
 package com.desafio.apipagamento.domain.dtos;
 
-import com.desafio.apipagamento.domain.enums.MetodoPagamento;
 import com.desafio.apipagamento.domain.entities.Pagamento;
+import com.desafio.apipagamento.domain.enums.MetodoPagamento;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
