@@ -4,13 +4,13 @@ INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, stat
 
 INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('44083348046', 'CREDITO','5243663817109003', 500.00, 'PROCESSADO_SUCESSO');
 
-INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('13270888007', 'DEBITO','5123546704476103', 740.35, 'PROCESSADO_SUCESSO');
+INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('49672185000170', 'DEBITO','5123546704476103', 740.35, 'PROCESSADO_SUCESSO');
 
-INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('13270888007', 'CREDITO','5123546704476103', 1000.00, 'PROCESSADO_SUCESSO');
+INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('49672185000170', 'CREDITO','5123546704476103', 1000.00, 'PROCESSADO_SUCESSO');
 
-INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('13270888007', 'BOLETO', null, 2000.00, 'PENDENTE');
+INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('49672185000170', 'BOLETO', null, 2000.00, 'PENDENTE');
 
-INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('13270888007', 'PIX', null, 2000.00, 'PENDENTE');
+INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('49672185000170', 'PIX', null, 2000.00, 'PENDENTE');
 
 INSERT INTO tb_pagamento (cpf_cnpj, metodo_pagamento, numero_cartao, valor, status) VALUES ('54625420032', 'CREDITO','5595618493515653', 350.25, 'PROCESSADO_SUCESSO');
 
