@@ -2,6 +2,8 @@ package com.desafio.apipagamento.domain.dtos;
 
 import com.desafio.apipagamento.domain.entities.Pagamento;
 import com.desafio.apipagamento.domain.enums.MetodoPagamento;
+import com.desafio.apipagamento.validations.EnumValidation;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,9 +16,8 @@ public class NovoPagamentoRequest {
     @NotBlank(message = "Campo CPF/CNPJ é obrigatório.")
     private String cpfCnpj;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull(message = "Campo método de pagamento é obrigatório.")
-    private MetodoPagamento metodoPagamento;
+    @EnumValidation(message = "Informe um método de pagamento válido.", enumClass = MetodoPagamento.class)
+    private String metodoPagamento;
 
     private String numeroCartao;
 
@@ -35,11 +36,11 @@ public class NovoPagamentoRequest {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public MetodoPagamento getMetodoPagamento() {
+    public String getMetodoPagamento() {
         return metodoPagamento;
     }
 
-    public void setMetodoPagamento(MetodoPagamento metodoPagamento) {
+    public void setMetodoPagamento(String metodoPagamento) {
         this.metodoPagamento = metodoPagamento;
     }
 
@@ -62,7 +63,7 @@ public class NovoPagamentoRequest {
     public Pagamento toModel() {
         Pagamento pagamento = new Pagamento();
         pagamento.setCpfCnpj(cpfCnpj);
-        pagamento.setMetodoPagamento(metodoPagamento);
+        pagamento.setMetodoPagamento(MetodoPagamento.valueOf(metodoPagamento));
         pagamento.setNumeroCartao(numeroCartao);
         pagamento.setValor(valor);
 
@@ -70,6 +71,7 @@ public class NovoPagamentoRequest {
     }
 
     public boolean deveInformarNumeroDeCartao() {
-        return metodoPagamento.deveInformarNumeroDeCartao() && (numeroCartao == null || numeroCartao.isBlank());
+        MetodoPagamento tipoPagamento = MetodoPagamento.valueOf(metodoPagamento);
+        return tipoPagamento.deveInformarNumeroDeCartao() && !StringUtils.hasText(numeroCartao);
     }
 }
